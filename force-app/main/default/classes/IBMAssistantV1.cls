@@ -9,8 +9,8 @@
  */
 public class IBMAssistantV1 extends IBMWatsonService {
 
-  private static final String SERVICE_NAME = 'assistant';
-  private static final String SERVICE_URL = 'https://gateway.watsonplatform.net/assistant/api';
+  private static final String DEFAULT_SERVICE_NAME = 'conversation';
+  private static final String DEFAULT_SERVICE_URL = 'https://gateway.watsonplatform.net/assistant/api';
 
   private String versionDate;
 
@@ -21,7 +21,7 @@ public class IBMAssistantV1 extends IBMWatsonService {
    *          calls from failing when the service introduces breaking changes.
    */
    public IBMAssistantV1(String versionDate) {
-     this(versionDate, IBMWatsonConfigBasedAuthenticatorFactory.getAuthenticator(SERVICE_NAME));
+     this(versionDate, IBMWatsonConfigBasedAuthenticatorFactory.getAuthenticator(DEFAULT_SERVICE_NAME));
    }
 
   /**
@@ -32,10 +32,10 @@ public class IBMAssistantV1 extends IBMWatsonService {
    * @param authenticator The IBMWatsonAuthenticator implementation to use for authenticating when making service requests
    */
   public IBMAssistantV1(String versionDate, IBMWatsonAuthenticator authenticator) {
-    super(SERVICE_NAME, 'v1', authenticator);
+    super(DEFAULT_SERVICE_NAME, 'v1', authenticator);
 
     if ((getServiceURL() == null) || String.isBlank(getServiceURL())) {
-      setServiceURL(SERVICE_URL);
+      setServiceURL(DEFAULT_SERVICE_URL);
     }
 
     if (String.isBlank(versionDate)) {
